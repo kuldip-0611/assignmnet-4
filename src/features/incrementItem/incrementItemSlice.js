@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   totalQuantity: 0,
   data: [],
+
 };
 
 const incrementItemSlice = createSlice({
@@ -12,8 +13,8 @@ const incrementItemSlice = createSlice({
     incrementItem: (state, action) => {
       state.data.map((item, index) => {
         if (action.payload.ID === item.ID) {
-          state.data[index].QUANTITY++;
-          state.totalQuantity++;
+          state.data[index].QUANTITY!=0 && state.data[index].QUANTITY++;
+          state.totalQuantity!=0 && state.totalQuantity++;
 
           state.data[index].PRICE += action.payload.BASEPRICE;
         } else {
@@ -26,14 +27,21 @@ const incrementItemSlice = createSlice({
         console.log(action.payload.ID);
 
         if (action.payload.ID === item.ID) {
-          state.data[index].QUANTITY--;
-          state.totalQuantity--;
-          state.data[index].PRICE -= action.payload.BASEPRICE;
+          
+          
+            state.data[index].QUANTITY!=0 && state.data[index].QUANTITY--;          
+            state.totalQuantity--;
+            state.data[index].PRICE!=0 && (state.data[index].PRICE -= action.payload.BASEPRICE);
+            if(state.data[index].QUANTITY == 0){
+              state.data.splice(index,1)
+            }          
+         
         } else {
           return state.data[index].QUANTITY;
         }
       });
     },
+
     addToCart: (state, action) => {
       if (state.data.length === 0) {
         state.data.push(action.payload);
@@ -53,12 +61,13 @@ const incrementItemSlice = createSlice({
             if (action.payload.ID === item.ID) {
               state.data[index].QUANTITY++;
               state.totalQuantity++;
-              state.data[index].PRICE += action.payload.BASEPRICE;
+              (state.data[index].PRICE += action.payload.BASEPRICE);
             }
           }
         });
       }
     },
+
   },
 });
 

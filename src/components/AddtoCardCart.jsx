@@ -7,16 +7,18 @@ import {
   incrementItem,
 } from "../features/incrementItem/incrementItemSlice";
 
-const AddtoCardCart = () => {
+const AddtoCardCart = ({show}) => {
   const disptch = useDispatch();
 
   const cards = useSelector((state) => {
     return state.incrementItem.data;
   });
+  
 
   return (
     <div>
-      {cards.map((item) => (
+     
+     {cards.map((item) => (
         <Card key={item.ID} className="bg-dark my-2">
           <Card.Body>
             <Card.Title className="text-start text-light">
@@ -50,7 +52,8 @@ const AddtoCardCart = () => {
             </Button>
           </Card.Body>
         </Card>
-      ))}
+      )) }
+     
     </div>
   );
 };

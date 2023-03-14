@@ -14,7 +14,7 @@ const ProductCard = () => {
   return (
     <>
       {data.map((item) => {
-        // const [title, price, description, id] =item
+        
         return (
           <Card key={item.id} className="my-2">
             <Card.Body>

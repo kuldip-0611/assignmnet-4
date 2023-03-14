@@ -1,4 +1,5 @@
 import { Container } from "react-bootstrap";
+import { useState } from "react";
 import "./App.css";
 import AddtoCardCart from "./components/AddtoCardCart";
 import AppBar from "./components/AppBar";
@@ -7,12 +8,13 @@ import ShoppingCartComponent from "./components/ShoppingCartComponent";
 import data from "./data";
 
 function App() {
+  const [show,setShow] = useState(false);
   return (
     <div className="App">
-      <AppBar />
+      <AppBar show={show} setShow={setShow} />
 
       <Container>
-        <ShoppingCartComponent />
+      {show   &&   <ShoppingCartComponent /> }
         <hr/>
         <ProductCard />
       </Container>
