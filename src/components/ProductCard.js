@@ -11,6 +11,15 @@ import data from "../data";
 const ProductCard = () => {
   const dispatch = useDispatch();
 
+  const addToCartHandler = (ID,TITLE,PRICE,QUANTITY,BASEPRICE) => {
+    dispatch(addToCart(
+      ID,
+      TITLE,
+      PRICE,
+      QUANTITY,
+      BASEPRICE
+    ));
+  }
   return (
     <>
       {data.map((item) => {
@@ -28,13 +37,13 @@ const ProductCard = () => {
               </Card.Subtitle>
 
               <Button
-                onClick={() => dispatch(addToCart({
+                onClick={() => addToCartHandler({
                   ID:item.id,
                   TITLE:item.title,
                   PRICE:item.price,
                   QUANTITY:1,
                   BASEPRICE:item.baseprice
-                }))}
+                })}
                 className="addToCart-btn"
               >
                 Add To Cart

@@ -1,9 +1,9 @@
 .cart-btn{
-    border: 1px solid greenyellow;
-    color: greenyellow;
+    border: 1px solid $color-cartBtn;
+    color: $color-cartBtn;
 
     &-item{
-        background-color: rgb(137, 197, 48);
+        background-color: $color-cartBtn;
         color: black;
     }
 }
